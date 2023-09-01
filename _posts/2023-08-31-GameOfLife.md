@@ -1,11 +1,11 @@
 ---
 toc: true
-comments: false
+comments: true
 layout: post
-title: Game of Life
-description: The game of life
+title: Game Of Life
+description: The Game Of Life
+type: hacks
 courses: { compsci: {week: 2} }
-type: plans
 ---
 
 <style>
@@ -14,8 +14,8 @@ type: plans
     }
 
     .cell {
-    background-color: royalblue;
-    border: 1px solid black;
+    background-color: green;
+    border: 1px solid blue;
     }
 </style>
 

@@ -2,8 +2,8 @@
 toc: true
 comments: false
 layout: post
-title: Reflection
-description: Week 1 Plans
+title: Week 1 Reflection
+description: This weeks reflection
 courses: { compsci: {week: 1} }
 type: tangibles
 ---

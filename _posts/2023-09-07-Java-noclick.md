@@ -11,7 +11,7 @@ type: hacks
         #moveButton {
             position: absolute;
             left: 50%;
-            top: 50
+            top: 50%;
             /* Fine-tune the centering by moving the button back by half of its own width and height */
             transform: translate(-50%, -50%);
         }

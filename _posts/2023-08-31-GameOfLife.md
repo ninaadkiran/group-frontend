@@ -1,9 +1,9 @@
 ---
 toc: true
-comments: true
+comments: false
 layout: post
 title: Game Of Life
-description: The Game Of Life
+description: The Game Of Life!
 type: hacks
 courses: { compsci: {week: 2} }
 ---

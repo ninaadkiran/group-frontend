@@ -8,7 +8,7 @@ courses: {'compsci': {'week': 4}}
 type: hacks
 ---
 
-<img src="images/Team_Manifesto.png"
+<img src="/images/Team_Manifesto.png"
 width="200"
 height="300"
 style="border:5px solid black"/>

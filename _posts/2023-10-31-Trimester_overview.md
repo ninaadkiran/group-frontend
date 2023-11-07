@@ -5,7 +5,7 @@ layout: post
 title: Trimester Description
 description: This week's overview
 type: tangibles
-courses: { compsci: {week: 7} }
+courses: { 'compsci': {'week': 11} }
 ---
 
 ## Overview of Trimester 1

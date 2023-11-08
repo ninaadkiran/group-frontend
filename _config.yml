@@ -10,9 +10,10 @@ baseurl: "/Ninaad-Repository2"
 # remote_theme: pages-themes/cayman@v0.2.0
 # remote_theme: pages-themes/time-machine@v0.2.0
 # remote_theme: pages-themes/merlot@v0.2.0
-remote_theme: pages-themes/modernist@v0.2.0
+# remote_theme: pages-themes/modernist@v0.2.0
 # remote_theme: pages-themes/architect@v0.2.0
 # remote_theme: pages-themes/slate@v0.2.0
+# theme: just-the-docs
 plugins:
 - jekyll-remote-theme
 future: true

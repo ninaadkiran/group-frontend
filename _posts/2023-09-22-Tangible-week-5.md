@@ -2,7 +2,7 @@
 toc: true
 comments: false
 layout: post
-title: Week 5 description
+title: Week 5 Reflection
 description: This week review
 courses: { compsci: {week: 5} }
 type: tangibles

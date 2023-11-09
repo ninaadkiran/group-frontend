@@ -2,7 +2,7 @@
 toc: true
 comments: false
 layout: post
-title: Week 2 reflection
+title: Week 2 Reflection
 description: Problems, solutions, and things I have learned
 courses: { compsci: {week: 2} }
 type: tangibles

@@ -2,7 +2,7 @@
 toc: true
 comments: false
 layout: post
-title: This week plans
+title: Week 2 plans
 description: Week 2 Plans
 courses: { compsci: {week: 2} }
 type: plans

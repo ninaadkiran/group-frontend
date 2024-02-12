@@ -74,7 +74,7 @@ The script defines a function when the page loads. This function is triggered wh
             // Success!!!
             // Redirect to the database page
             alert("Login Successful!")
-            window.location.href = "{{site.baseurl}}/flappy-bird";
+            window.location.href = "127.0.0.1:4700/_layouts/index.html";
         })
         // catch fetch errors (ie ACCESS to server blocked)
         .catch(err => {

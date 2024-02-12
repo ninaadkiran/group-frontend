@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galaxy Homepage</title>
+    <link rel="stylesheet" href="../script/css/home.css">
+    <script src="../script/javascript/button.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<header>
+    <div class="bg">
+        <div class="tablecontent">
+           
+            <table class="table table-striped table-dark table-bordered table-hover">
+                <thead class="thread-dark">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Score</th>
+                  </tr>
+                </thead>
+                <tbody id="result">
+                </tbody>
+              </table>
+        </div>
+
+    </div>
+</header>
+</body>
+</html>
+
+<script>
+
+fetchleaders();
+
+function fetchleaders() {
+    console.log("fetching leaders now")
+    
+    const resultContainer = document.getElementById("result");
+
+    const tr = document.createElement("tr");
+    const number = document.createElement("td");
+    const first = document.createElement("td");
+    const last = document.createElement("td");
+    const score = document.createElement("td");
+                  // data is specific to the API
+    number.innerHTML = "1"; 
+    first.innerHTML = "joshua"; 
+    last.innerHTML = "thinh";
+    score.innerHTML = "10000";
+
+      // this builds td's into tr
+    tr.appendChild(number);
+    tr.appendChild(first);
+    tr.appendChild(last);
+    tr.appendChild(score);
+    resultContainer.appendChild(tr);
+
+    const tr2 = document.createElement("tr");
+    const number2 = document.createElement("td");
+    const first2 = document.createElement("td");
+    const last2 = document.createElement("td");
+    const score2 = document.createElement("td");
+                  // data is specific to the API
+    number2.innerHTML = "1"; 
+    first2.innerHTML = "Jabob"; 
+    last2.innerHTML = "thi";
+    score2.innerHTML = "500";
+
+      // this builds td's into tr
+    tr2.appendChild(number2);
+    tr2.appendChild(first2);
+    tr2.appendChild(last2);
+    tr2.appendChild(score2);
+    resultContainer.appendChild(tr2);
+
+    console.log("finish leaders now")
+
+ }
+
+window.fetchUsers = fetchleaders;   
+
+</script>

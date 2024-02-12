@@ -88,3 +88,13 @@ header {
     height: auto;
     text-align: center;
 }
+
+  
+.tablecontent {
+    width: 90%;
+    height: 70%;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

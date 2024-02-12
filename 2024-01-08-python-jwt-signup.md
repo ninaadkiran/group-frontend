@@ -79,7 +79,7 @@ function signup_user() {
 
             // Success - user created
             alert("User created successfully!");
-            window.location.href = "{{site.baseurl}}/login";
+            window.location.href = "{{site.baseurl}}/index";
         })
         .catch(err => {
             console.error(err);

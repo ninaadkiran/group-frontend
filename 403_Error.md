@@ -8,7 +8,7 @@ permalink: 403_Error
 
 <!-- Incorrect Username or Password! Please try logging in again! -->
 
-<a href="{{site.baseurl}}/login">
+<a href="{{site.baseurl}}/index">
     <button class="signup-button">Try Again!</button>
 </a>
 

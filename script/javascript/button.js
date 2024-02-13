@@ -3,7 +3,7 @@ function galaxygame() {
 }
 
 function dodgegame() {
-    window.location.href = 'galaxy'; 
+    window.location.href = 'flappybird'; 
 }
 
 function escapegame() {

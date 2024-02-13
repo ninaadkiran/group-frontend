@@ -1,11 +1,11 @@
 function galaxygame() {
-    window.location.href = 'http://127.0.0.1:5500/_layouts/galaxy.html'; 
+    window.location.href = 'galaxy'; 
 }
 
 function dodgegame() {
-    window.location.href = 'http://127.0.0.1:5500/_layouts/galaxy.html'; 
+    window.location.href = 'galaxy'; 
 }
 
 function escapegame() {
-    window.location.href = 'http://127.0.0.1:5500/_layouts/galaxy.html'; 
+    window.location.href = 'galaxy'; 
 }

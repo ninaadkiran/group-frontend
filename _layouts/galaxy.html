@@ -4,8 +4,21 @@
     <meta charset="UTF-8">
     <title>galaxy</title>
     <link rel="stylesheet" href="{{site.baseurl}}/script/css/galaxy.css">
+    <link rel="stylesheet" href="{{site.baseurl}}/script/css/header.css">
+    <script src="{{site.baseurl}}/script/javascript/button.js"></script>
 </head>
 <body>
+
+    <header class="second-header">
+        <div class="box-center-header">
+            <button class="btn-primary-right" onclick="games()">Games</button>
+            <button class="btn-primary-left" onclick="leaderboard()">Leaderboard</button>
+            </div>
+        <hr>
+        <h1>
+            <div class="box">GALAXY</div>
+        </h1>
+    </header>
     <div id="game">
         <div id="block"></div>
         <div id="character"></div>
@@ -17,3 +30,70 @@
 </body>
 <script src="{{site.baseurl}}/script/javascript/galaxy.js"></script>
 </html>
+
+
+
+
+
+<script type="module">
+    import { uri, options } from '{{site.baseurl}}/assets/js/api/config.js';
+    // Get the modal
+    function postplayerscore(){
+
+        const username = getCookie("username")
+    
+
+        // Set Users endpoint (list of users)
+        const url = uri + '/api/players';
+    
+        // Set body of request to include login data from DOM
+        const body = {
+            uid: username,
+            name:username,
+            tokens: score
+        };
+    
+          // Change options according to Authentication requirements
+          const authOptions = {
+            ...options,
+            method: 'POST', // Override the method property
+            referrerPolicy: 'no-referrer',
+            mode: 'no-cors', // no-cors, *cors, same-origin
+            cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached   
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body:  JSON.stringify(body),
+        };
+    
+    
+        // Fetch JWT
+        fetch(url, authOptions)
+        .then(response => {
+            // handle error response from Web API
+            if (!response.ok) {
+                console.log("not success");
+            }else{
+            // Success!!!
+            // Redirect to the database page
+            console.log("success");
+            }
+        })
+        // catch fetch errors (ie ACCESS to server blocked)
+        .catch(err => {
+            console.error(err);
+        });
+    }
+      //Function takes the user data stores in the cookie for username
+      function getCookie(name) {
+        const cookies = document.cookie.split(";");
+            for (const cookie of cookies) {
+                const parts = cookie.split("=");
+                const cookieName = parts[0].trim();
+                if (cookieName === name) {
+                    return decodeURIComponent(parts[1]);
+                }
+            }
+        }
+        window.postplayerscore = postplayerscore;
+    </script>

@@ -57,6 +57,7 @@ var gameOverInterval;
 
 function updateScore(){
     scoreDisplay.textContent = "Score: " + score;
+    postplayerscore();
 }
 
 block.addEventListener('animationiteration', () => {
@@ -178,3 +179,7 @@ function showGameOver() {
 document.getElementById('restart-button').addEventListener('click', function () {
     restartGame();
 });
+
+
+
+

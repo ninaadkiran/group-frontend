@@ -30,6 +30,7 @@ function resetGame() {
     // Display the score in the game over text
     updateScore;
     gameOverText.innerHTML = "Game Over! Your Score: " + score + " seconds";
+    postplayerscore();
 }
 
 
@@ -57,7 +58,6 @@ var gameOverInterval;
 
 function updateScore(){
     scoreDisplay.textContent = "Score: " + score;
-    postplayerscore();
 }
 
 block.addEventListener('animationiteration', () => {

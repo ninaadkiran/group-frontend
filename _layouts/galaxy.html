@@ -40,7 +40,7 @@
     // Get the modal
     function postplayerscore(){
 
-        const username = getCookie("username")
+        const username = window.sessionStorage.username; 
     
 
         // Set Users endpoint (list of users)
@@ -55,11 +55,10 @@
     
           // Change options according to Authentication requirements
           const authOptions = {
-            ...options,
             method: 'POST', // Override the method property
-            referrerPolicy: 'no-referrer',
-            mode: 'no-cors', // no-cors, *cors, same-origin
-            cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached   
+            mode: 'cors', // no-cors, *cors, same-origin
+            cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: 'include', // include, same-origin, omit
             headers: {
               'Content-Type': 'application/json',
             },
@@ -84,16 +83,6 @@
             console.error(err);
         });
     }
-      //Function takes the user data stores in the cookie for username
-      function getCookie(name) {
-        const cookies = document.cookie.split(";");
-            for (const cookie of cookies) {
-                const parts = cookie.split("=");
-                const cookieName = parts[0].trim();
-                if (cookieName === name) {
-                    return decodeURIComponent(parts[1]);
-                }
-            }
-        }
-        window.postplayerscore = postplayerscore;
+   
+    window.postplayerscore = postplayerscore;
     </script>

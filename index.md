@@ -74,6 +74,7 @@ The script defines a function when the page loads. This function is triggered wh
             // Success!!!
             // Redirect to the database page
             alert("Login Successful!")
+            window.sessionStorage.username =  document.getElementById("uid").value
             window.location.href = "{{site.baseurl}}/games";
         })
         // catch fetch errors (ie ACCESS to server blocked)
@@ -81,6 +82,8 @@ The script defines a function when the page loads. This function is triggered wh
             console.error(err);
         });
     }
+
+    
 
     // Attach login_user to the window object, allowing access to form action
     window.login_user = login_user;

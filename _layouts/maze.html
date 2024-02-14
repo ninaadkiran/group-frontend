@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maze Game</title>
+    <link rel="stylesheet" href="/script/css/maze.css">
+</head>
+<style>
+
+</style>
+<body onload="createMaze()">
+    <h1>Maze Game</h1>
+    <select id="levelselect">
+        <option value="1">Level 1</option>
+        <option value="2">Level 2</option>
+        <option value="3">Level 3</option>
+    </select>
+
+    <div id="maze-container">
+        <img src="/images/rat.png" id="rat" 
+        width="50px" height="50px"
+        alt="rat">
+        <img src="/images/cheese.png" id="cheese" alt="cheese"
+        width="50px" height="50px"
+        >
+
+        <!-- i=0 <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div> -->
+        <!-- i=1 <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div> -->
+        <!-- i=2 <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div> -->
+        <!-- i=3 <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div> -->
+
+    </div>
+</body>
+<script>
+    let level1 = [
+        [2,0,1,0],
+        [1,1,1,1],
+        [1,0,1,0],
+        [1,0,1,1]
+    ]
+
+    let level2 = [
+        [2,1,1,0,1,0],
+        [1,0,1,1,1,1],
+        [0,0,1,0,0,0],
+        [1,0,1,1,1,1],
+        [1,0,1,0,1,0],
+        [1,1,1,0,1,1]
+    ]
+
+    let level3 = [
+        [2,0,0,1,1,1,0,0,0,0],
+        [1,0,0,1,0,1,1,1,1,1],
+        [1,1,1,1,0,0,0,0,0,1],
+        [1,0,0,0,0,1,1,1,1,1],
+        [1,0,1,1,1,1,0,1,0,1],
+        [1,0,1,0,0,0,0,1,0,0],
+        [1,1,1,0,1,0,1,1,0,1],
+        [1,0,0,0,1,0,0,1,0,1],
+        [1,0,1,1,1,0,1,1,1,1],
+        [1,1,1,0,0,0,1,0,0,1]
+    ]
+// 0 is wall, 1 is path, 2 is rat
+
+    let mazearray = level1;
+    let levelSelect = document.getElementById("levelselect");
+    levelSelect.addEventListener("change", function () {
+        let selectedLevel = parseInt(levelSelect.value);
+        console.log(selectedLevel);
+        if(selectedLevel == 1){
+            mazearray = level1;
+        }
+        if(selectedLevel == 2){
+            mazearray = level2;
+        }
+        if(selectedLevel == 3){
+            mazearray = level3;
+        }
+        maze.innerHTML = 
+        `<img src="/images/rat.png" id="rat" 
+        width="50px" height="50px"
+        alt="rat">
+        <img src="/images/cheese.png" id="cheese" alt="cheese"
+        width="50px" height="50px">`
+        createMaze();
+    })
+
+    let maze = document.getElementById("maze-container");
+    let rat = document.getElementById("rat");
+    let food = document.getElementById("cheese")
+
+    function setratposition( x,y ){
+        rat.style.top = x + "px";
+        rat.style.left = y + "px";
+    }
+    function setfoodposition( x,y ){
+        food.style.bottom = x + "px";
+        food.style.right = y + "px";
+    }
+
+    function createMaze() {
+        for(let i=0; i<mazearray.length;i++){
+            let row = document.createElement("div");
+            row.classList.add("row");
+
+            for(let j = 0 ; j<mazearray[i].length; j++){
+                let cell = document.createElement("div");
+                cell.classList.add("cell");
+
+                if(mazearray[i][j] == 0){
+                    cell.classList.add("wall");
+                }
+
+                if(i==0 && j==0){
+                    mazearray[i][j]=2;
+                }
+                row.appendChild(cell);
+            }
+            maze.appendChild(row);
+        }
+
+        setratposition(0,0)
+        setfoodposition(0,0)
+        getratposition();
+    }
+
+    function getratposition(){
+        let position = [-1,-1];
+        for(let i=0; i<mazearray.length;i++){
+            for(let j = 0 ; j<mazearray[i].length; j++){
+               if(mazearray[i][j] == 2){
+                position[0] = i;
+                position[1] = j;
+               } 
+            }
+        }
+
+        console.log(position);
+        return position;
+    }
+
+    document.addEventListener("keydown" , function (e){
+        let rat = document.getElementById("rat");
+        let food = document.getElementById("cheese");
+        let ratleft = rat.offsetLeft;
+        let rattop = rat.offsetTop;
+        let foodleft = food.offsetLeft;
+        let foodtop = food.offsetTop;
+        let ratposition = getratposition();
+
+        if(e.key == "ArrowRight" 
+        && ratleft < (mazearray.length - 1)*50 
+        && mazearray[ratposition[0]][ratposition[1]+1] == 1){
+                    ratleft += 50;
+                    rat.style.left = ratleft + "px";
+                    mazearray[ratposition[0]][ratposition[1]] = 1; //update rat's position
+                    mazearray[ratposition[0]][ratposition[1] + 1] = 2;
+                }
+                //console.log(mazearray);
+
+        if(e.key == "ArrowLeft" 
+        && ratleft > 0 
+        && mazearray[ratposition[0]][ratposition[1]-1] == 1){
+            ratleft -= 50;
+            rat.style.left = ratleft + "px";
+            mazearray[ratposition[0]][ratposition[1]] = 1;
+            mazearray[ratposition[0]][ratposition[1] - 1] = 2;
+        }
+
+        if(e.key == "ArrowUp"
+        && rattop > 0 
+        && mazearray[ratposition[0] - 1][ratposition[1]] == 1){
+            rattop -= 50;
+            rat.style.top = rattop + "px";
+            mazearray[ratposition[0]][ratposition[1]] = 1;
+            mazearray[ratposition[0] - 1][ratposition[1]] = 2;
+        }
+
+        if(e.key == "ArrowDown"
+        && rattop < (mazearray.length - 1) * 50
+        && mazearray[ratposition[0] + 1][ratposition[1]] == 1){
+            rattop += 50;
+            rat.style.top = rattop + "px";
+            mazearray[ratposition[0]][ratposition[1]] = 1;
+            mazearray[ratposition[0] + 1][ratposition[1]] = 2;
+        }
+
+        if(ratleft == foodleft && rattop == foodtop){
+            alert("You win!");
+        }
+
+    })
+</script>
+</html>

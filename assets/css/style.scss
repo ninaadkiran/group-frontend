@@ -11,7 +11,7 @@
     height: auto;
     border-radius: 10px;
     background-color: #21807c;
-    border: 3px solid black;
+    border: 3px solid #F748A9;
     font-size: 1.5em;
 
     display: flex;
@@ -32,7 +32,7 @@
 
    /* darkens the background color on hover to create a selecting effect */
   .button:hover {
-    background-color: #373737;
+    background-color: #F748A9;
   }
 
   /* "row style" is flexible size and aligns pictures in center */
@@ -91,8 +91,8 @@
 
  /* JWT login page */
  $loginfont: 'Black Ops One', system-ui;
- $niceyellow: rgba(225, 255, 0, 0.81);
- $niceblue: #71bbe9;
+ $niceyellow: #F748A9;
+ $niceblue: #000000;
 
  .title {
    font-size: 50px;
@@ -104,13 +104,13 @@
  .descriptiontext {
    font-size: 30px;
    font-family: $loginfont;
-   color: $niceyellow;
+   color: #FFC8C5;
  }
 
  .inputusername {
    font-size: 20px;
    font-family: $loginfont;
-   color: $niceyellow;
+   color: #FFC8C5;
  }
 
  .inputpassword {

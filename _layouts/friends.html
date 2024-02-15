@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friends</title>
+    <link rel="stylesheet" href="{{site.baseurl}}/script/css/header.css">
+    <script src="{{site.baseurl}}/script/javascript/button.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+  <header class="second-header">
+    <div class="box-center-header">
+        <button class="btn-primary-right" onclick="games()">Games</button>
+        <button class="btn-primary-mid" onclick="leaderboard()">Leaderboard</button>
+        <button class="btn-primary-left" onclick="galaxygame()">Galaxy</button>
+        </div>
+    <hr>
+    <h1>
+        <div class="box">Friends List</div>
+    </h1>
+</header>
+
+
+
+</body>
+
+<div class="container">
+<h1>Add a Friend</h1>
+<p>Please fill in this form to add a friend</p>
+<hr>
+<form class="form-inline"  id="signup-form"  action="javascript:signup_user()" >
+  <div class="form-group mb-2">
+  
+      <label for="staticEmail2" class="sr-only">Friend UID</label>
+      <input type="text"  class="form-control-plaintext" id="uidfriend">
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">Add Friend</button>
+  </form>
+</div>
+
+
+    <div class="bg">
+        <div class="tablecontent">
+           
+            <table class="table table-striped table-dark table-bordered table-hover">
+                <thead class="thread-dark">
+                  <tr>
+                    <th scope="col">userId</th>
+                    <th scope="col">Friends UserId</th>
+                  </tr>
+                </thead>
+                <tbody id="result">
+                </tbody>
+              </table>
+        </div>
+
+    </div>
+
+</body>
+</html>
+
+
+
+<script type="module">
+  // uri variable and options object are obtained from config.js
+ import { uri, options } from '{{site.baseurl}}/assets/js/api/config.js';
+  // Get the modal
+
+  async function signup_user() {
+     // Set Authenticate endpoint
+     const url = uri + '/api/friends';
+     const username = window.sessionStorage.username; 
+     // Set the body of the request to include login data from the DOM
+     const body = {
+        uidfriend: document.getElementById("uidfriend").value,
+         uid: username
+         
+     };
+
+        // Change options according to Authentication requirements
+        const authOptions = {
+         method: 'POST', // Override the method property
+         mode: 'cors', // no-cors, *cors, same-origin
+         cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached
+         credentials: 'include', // include, same-origin, omit
+         headers: {
+           'Content-Type': 'application/json',
+         },
+         body:  JSON.stringify(body),
+     };
+
+       // Fetch JWT
+       fetch(url, authOptions)
+       .then(response2 => {
+           // handle error response from Web API
+          const data = response2.json();
+          if (response2.ok) {
+            alert("You have successfully Added a friend.");
+            window.location.reload(true) 
+            
+          } else if (response2.status === 401) {
+            alert("You have error signUp.");
+          } else if (response2.status === 403) {
+            alert("You have error signUp.");
+          } else if (response2.status === 404) {
+            alert("You have error signUp.");
+          }else{
+            alert("You have error signUp.");
+          }  
+       })
+       // catch fetch errors (ie ACCESS to server blocked)
+       .catch(err => {
+           console.error(err);
+       });
+
+  }  
+  window.signup_user = signup_user;
+  </script>
+
+<script type="module">
+  // uri variable and options object are obtained from config.js
+ import { uri, options } from '{{site.baseurl}}/assets/js/api/config.js';
+
+  // Set Users endpoint (list of users)
+  const username = window.sessionStorage.username; 
+  const url = uri + '/api/friends/'+username;
+
+  let users = [];
+  
+
+  // prepare HTML result container for new output
+  const resultContainer = document.getElementById("result");
+
+        // Change options according to Authentication requirements
+       
+
+fetchleaders();
+
+
+function fetchleaders() {
+
+  // fetch the API
+  fetch(url, options)
+    // response is a RESTful "promise" on any successful fetch
+    .then(response => {
+      // check for response errors and display
+      if (response.status !== 200) {
+
+      }
+      // valid response will contain JSON data
+      response.json().then(data => {
+          console.log(data);
+          users = data;
+          for (const row of data) {
+            // tr and td build out for each row
+            const tr = document.createElement("tr");
+            const uid = document.createElement("td");
+            const uidfriend = document.createElement("td");
+                          // data is specific to the API
+
+            // data is specific to the API
+            uid.innerHTML = row.uid; 
+            uidfriend.innerHTML = row.uidfriend; 
+
+
+            // this builds td's into tr
+            tr.appendChild(uid);
+            tr.appendChild(uidfriend);
+            // append the row to table
+
+            resultContainer.appendChild(tr);
+          }
+      })
+  })
+}
+
+window.fetchUsers = fetchleaders;   
+
+</script>

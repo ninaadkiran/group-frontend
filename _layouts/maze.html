@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maze Game</title>
-    <link rel="stylesheet" href="/script/css/maze.css">
+    <link rel="stylesheet" href="{{site.baseurl}}/script/css/maze.css">
+    <link rel="stylesheet" href="{{site.baseurl}}/script/css/header.css">
+    <script src="{{site.baseurl}}/script/javascript/button.js"></script>
 </head>
-<style>
-
-</style>
 <body onload="createMaze()">
     <h1>Maze Game</h1>
     <select id="levelselect">
@@ -18,10 +17,10 @@
     </select>
 
     <div id="maze-container">
-        <img src="/images/rat.png" id="rat" 
+        <img src="{{site.baseurl}}/images/rat.png" id="rat" 
         width="50px" height="50px"
         alt="rat">
-        <img src="/images/cheese.png" id="cheese" alt="cheese"
+        <img src="{{site.baseurl}}/images/cheese.png" id="cheese" alt="cheese"
         width="50px" height="50px"
         >
 
@@ -98,10 +97,10 @@
             mazearray = level3;
         }
         maze.innerHTML = 
-        `<img src="/images/rat.png" id="rat" 
+        `<img src="{{site.baseurl}}/images/rat.png" id="rat" 
         width="50px" height="50px"
         alt="rat">
-        <img src="/images/cheese.png" id="cheese" alt="cheese"
+        <img src="{{site.baseurl}}/images/cheese.png" id="cheese" alt="cheese"
         width="50px" height="50px">`
         createMaze();
     })

@@ -50,6 +50,10 @@
         </div> -->
 
     </div>
+
+    <div id="score">
+        <p>Time taken: <span id="time"></span></p>
+    </div>
 </body>
 <script>
     let level1 = [
@@ -108,6 +112,7 @@
     let maze = document.getElementById("maze-container");
     let rat = document.getElementById("rat");
     let food = document.getElementById("cheese")
+    let startTime, endTime;
 
     function setratposition( x,y ){
         rat.style.top = x + "px";
@@ -142,6 +147,7 @@
         setratposition(0,0)
         setfoodposition(0,0)
         getratposition();
+        startTime = new Date();
     }
 
     function getratposition(){
@@ -207,6 +213,13 @@
 
         if(ratleft == foodleft && rattop == foodtop){
             alert("You win!");
+        }
+
+        if(ratleft == foodleft && rattop == foodtop){
+            endTime = new Date();
+            let timeTaken = (endTime - startTime) / 1000; // in seconds
+            document.getElementById("time").textContent = timeTaken.toFixed(2) + " seconds";
+            alert("You win! Time taken: " + timeTaken.toFixed(2) + " seconds");
         }
 
     })

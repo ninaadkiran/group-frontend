@@ -70,12 +70,12 @@ block.addEventListener('animationiteration', () => {
 
     // Increase animation speed over time
     animationDuration *= 0.95; // You can adjust the multiplier for the speed of increase
-    block.style.animationDuration = `${animationDuration / 1000}s`;
+    block.style.animationDuration = `${animationDuration / 500}s`;
 
     // Restart the animation
     block.style.animation = 'none';
     void block.offsetWidth; // Trigger reflow
-    block.style.animation = `slide ${animationDuration / 1000}s infinite`;
+    block.style.animation = `slide ${animationDuration / 500}s infinite`;
 
    updateScore;
 });
@@ -137,7 +137,7 @@ function restartGame() {
     resetTimer();
 
     // Resume the block animation
-    block.style.animation = `slide ${animationDuration / 1000}s infinite`;
+    block.style.animation = `slide ${animationDuration / 500}s infinite`;
 
     // Clear the interval for game over check (if it's running)
     clearInterval(gameOverInterval);

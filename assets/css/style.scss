@@ -24,7 +24,7 @@
     // Creates smooth animation effect
     transition: all 0.5s; 
   }
-
+  
   /* define class for redifined button */
   .button {
     @include button;
@@ -136,3 +136,7 @@
   background-color: green;
   color: white
  }
+ body {
+  background: url(../../images/logincar.gif);
+  background-size: cover;
+}

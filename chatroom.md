@@ -9,7 +9,7 @@ permalink: /chat
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #301934;
+            background-color: #232122;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -19,38 +19,38 @@ permalink: /chat
         .chatroom {
             width: 700px;
             height: 600px;
-            background-color: #000;
+            background-color: #232122;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             overflow: hidden;
         }
         .chatroom-header {
-            background-color: #301934;
+            background-color: #C13A7F;
             color: #000;
             text-align: center;
             padding: 10px;
-            border-bottom: 1px solid #301934;
+            border-bottom: 1px solid #C13A7F;
         }
         .chatroom-messages {
             max-height: 460px;
             min-height: 460px;
             padding: 8px;
             overflow-y: auto;
-            background-color: #000;
+            background-color: #232122;
             scrollbar-width: thin; /* for Firefox */
-            scrollbar-color: #301934 #000; /* for Firefox */
+            scrollbar-color: #232122 #232122; /* for Firefox */
         }
         .chatroom-messages::-webkit-scrollbar {
             width: 8px; /* for Chrome, Safari, and Opera */
         }
         .chatroom-messages::-webkit-scrollbar-thumb {
-            background-color: #301934; /* for Chrome, Safari, and Opera */
+            background-color: #C13A7F; /* for Chrome, Safari, and Opera */
         }
         .chatroom-messages div {
-            background-color: #000;
+            background-color: #C13A7F;
             border-radius: 5px;
             margin: 5px 0;
-            padding: 10px;
+            padding: 5px;
             word-wrap: break-word;
         }
         .chatroom-input {
@@ -63,11 +63,11 @@ permalink: /chat
             padding: 10px;
             border: none;
             border-radius: 5px;
-            background-color: #301934;
+            background-color: #C13A7F;
             color: #FFFFFF;
         }
         button {
-            background-color: #301934;
+            background-color: #C13A7F;
             color: #FFFFFF;
             border: none;
             border-radius: 5px;
@@ -160,29 +160,29 @@ function displayChat() {
             const toggleButton = document.getElementById('toggleModeButton');
             if (body.classList.contains('dark-mode')) {
                 body.classList.remove('dark-mode');
-                chatroom.style.backgroundColor = '#FFF';
-                chatroomHeader.style.backgroundColor = '#ADD8E6';
+                chatroom.style.backgroundColor = '#FFC8C5';
+                chatroomHeader.style.backgroundColor = '#C13A7F';
                 chatroomHeader.style.color = '#000';
-                chatroomMessages.style.backgroundColor = '#FFF';
-                input.style.backgroundColor = '#ADD8E6';
+                chatroomMessages.style.backgroundColor = '#FFC8C5';
+                input.style.backgroundColor = '#C13A7F';
                 input.style.color = '#000';
-                button1.style.backgroundColor = '#ADD8E6';
-                button1.style.color = '#FFF';
-                toggleButton.style.backgroundColor = '#ADD8E6';
-                toggleButton.style.color = '#FFF';
+                button1.style.backgroundColor = '#C13A7F';
+                button1.style.color = '#FFC8C5';
+                toggleButton.style.backgroundColor = '#C13A7F';
+                toggleButton.style.color = '#FFC8C5';
                 toggleButton.textContent = 'Dark Mode';
             } else {
                 body.classList.add('dark-mode');
-                chatroom.style.backgroundColor = '#000';
-                chatroomHeader.style.backgroundColor = '#301934';
-                chatroomHeader.style.color = '#000';
-                chatroomMessages.style.backgroundColor = '#000';
-                input.style.backgroundColor = '#301934';
-                input.style.color = '#FFF';
-                button1.style.backgroundColor = '#301934';
-                button1.style.color = '#FFF';
-                toggleButton.style.backgroundColor = '#301934';
-                toggleButton.style.color = '#FFF';
+                chatroom.style.backgroundColor = '#232122';
+                chatroomHeader.style.backgroundColor = '#C13A7F';
+                chatroomHeader.style.color = '#232122';
+                chatroomMessages.style.backgroundColor = '#232122';
+                input.style.backgroundColor = '#C13A7F';
+                input.style.color = '#232122';
+                button1.style.backgroundColor = '#C13A7F';
+                button1.style.color = '#232122';
+                toggleButton.style.backgroundColor = '#C13A7F';
+                toggleButton.style.color = '#232122';
                 toggleButton.textContent = 'Light Mode';
             }
         }

@@ -7,7 +7,7 @@ function dodgegame() {
 }
 
 function escapegame() {
-    window.location.href = 'maze'; 
+    window.location.href = 'chat'; 
 }
 
 function leaderboard() {

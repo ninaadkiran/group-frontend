@@ -82,9 +82,6 @@ The script defines a function when the page loads. This function is triggered wh
             console.error(err);
         });
     }
-
-    
-
     // Attach login_user to the window object, allowing access to form action
     window.login_user = login_user;
 </script>

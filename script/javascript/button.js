@@ -7,7 +7,7 @@ function dodgegame() {
 }
 
 function escapegame() {
-    window.location.href = 'chat'; 
+    window.location.href = 'maze'; 
 }
 
 function leaderboard() {
@@ -16,4 +16,8 @@ function leaderboard() {
 
 function games() {
     window.location.href = 'games'; 
+}
+
+function friends() {
+    window.location.href = 'friends'; 
 }

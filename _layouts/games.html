@@ -45,10 +45,9 @@
                     <p>Escape the Asteroid Belt is a simple game that revolves around the idea of a lost astronaut in space trying to reach home, navigate your way through a maze of walls and reach your base!</p>
                 </div>
             </div>
-            <!-- New Button Added -->
             <button class="open-button" onclick="openForm()">Chat</button>
-            <!-- New Button to Database -->
             <button class="open-button2" onclick="openDatabase()">Database</button>
+            <button class="open-button3" onclick="openIndex()">Back to login</button>
         </div>
     </div>
 </header>
@@ -61,6 +60,10 @@
 
     function openDatabase() {
         window.location.href = "{{site.baseurl}}/database";
+    }
+
+    function openIndex() {
+        window.location.href = "{{site.baseurl}}/index";
     }
 </script>
 

@@ -51,7 +51,7 @@ The form triggers the login_user function defined in the JavaScript below when t
           }
           // valid response will contain JSON data
           response.json().then(data => {
-            window.location.href = "{{site.baseurl}}/data/database";
+            window.location.href = "{{site.baseurl}}/database";
           })
       })
       // catch fetch errors (ie ACCESS to server blocked)

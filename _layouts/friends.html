@@ -95,18 +95,18 @@
        .then(response2 => {
            // handle error response from Web API
           const data = response2.json();
-          if (response2.ok) {
+          if (response2.status === 200) {
             alert("You have successfully Added a friend.");
             window.location.reload(true) 
             
           } else if (response2.status === 401) {
-            alert("You have error signUp.");
+            alert("Error adding a friend.");
           } else if (response2.status === 403) {
-            alert("You have error signUp.");
+            alert("Error adding a friend.");
           } else if (response2.status === 404) {
-            alert("You have error signUp.");
+            alert("Error adding a friend.");
           }else{
-            alert("You have error signUp.");
+            alert("Error adding a friend.");
           }  
        })
        // catch fetch errors (ie ACCESS to server blocked)

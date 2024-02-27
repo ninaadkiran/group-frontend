@@ -78,7 +78,7 @@ The form triggers the login_user function defined in the JavaScript below when t
             response.json().then(data => {
               // insert whatever code you want here
             alert("User created successfully!");
-            window.location.href = "{{site.baseurl}}/login";
+            window.location.href = "{{site.baseurl}}/games";
             })
         })
         // catch fetch errors (ie ACCESS to server blocked)

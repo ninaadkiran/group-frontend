@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do You Survive Titanic?</title>
+    <link rel="stylesheet" href="script/css/home.css"> <!-- Link to your CSS file for styling -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        .bg2 {
+            color: cyan;
+            font-size: large;
+            width: 100;
+            height: 100vh;
+            background: url(./images/home.gif);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: white;
+            background-repeat: no-repeat;
+            background-blend-mode: hard-light;
+            font-weight: bold;
+            text-align: center;
+        }
+        .results {
+            color: limegreen;
+            font-size: xx-large;
+        }
+        .badresults {
+            color: red;
+            font-size: xx-large;
+        }
+        </style>
+
+</head>
+<body>
+    <div class="bg2">
+        <h1>will you survive the Galaxy game for 10 mins?</h1>
+        <p>Galaxy Game is an expanded version of the 1962 Spacewar!, potentially the first video game to spread to multiple computer installations. How likely are you to survive 10 mins?</p>
+        <p>Popular games: <br>
+           under 10 minutes - novice <br>
+           over 10 mins - Pro <br>
+
+        </p>
+        <form id="titanicForm"  >
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"><br><br>
+            
+            <label for="sex">Sex:</label>
+            <select id="sex" name="sex">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select><br><br>
+            
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age"><br><br>
+
+            <label for="years">Years of Gaming:</label>
+            <input type="number" id="years" name="years"><br><br>
+            
+            <label for="dominanthand">Dominant Hand:</label>
+            <select id="dominanthand" name="dominanthand">
+                <option value="right">Right</option>
+                <option value="left">left</option>
+            </select><br><br>
+            
+            
+            
+            <label for="favoritegame">favorite Game:</label>
+            <select id="favoritegame" name="favoritegame">
+                <option value="galaxy">Galaxy</option>
+                <option value="maze">Maxe</option>
+                <option value="asteroid">Astreroid</option>
+            </select><br><br>
+            
+            <label for="operatingsystem">operating System:</label>
+            <select id="operatingsystem" name="operatingsystem">
+                <option value="pc">pc</option>
+                <option value="mac">mac</option>
+            </select><br><br>
+            
+            <button type="submit" class="btn btn-primary">Survivial </button>
+        </form>
+        <div id="result" class="results"></div>
+    </div>
+
+    <script type="module">
+        // uri variable and options object are obtained from config.js
+       import { uri, options } from '{{site.baseurl}}/assets/js/api/config.js';
+        // Get the modal
+        document.getElementById('titanicForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const form = event.target;
+            var formData = {
+                'name': document.getElementById('name').value,
+                'age': parseInt(document.getElementById('age').value),
+                'sex': document.getElementById('sex').value,
+                'favoritegame': document.getElementById('favoritegame').value,  
+                'dominanthand': document.getElementById('dominanthand').value,
+                'operatingsystem': document.getElementById('operatingsystem').value,
+                'years': parseInt(document.getElementById('years').value),
+            };
+
+            const url = uri + '/api/wwchickendinner/predict';
+
+             // Change options according to Authentication requirements
+        const authOptions = {
+            method: 'POST', // Override the method property
+            mode: 'cors', // no-cors, *cors, same-origin
+            cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: 'include', // include, same-origin, omit
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body:  JSON.stringify(formData),
+        };
+            fetch(url, authOptions)
+            .then(response => response.json())
+            .then(data => {
+                // Display prediction result
+                var probability = (data.survive * 100).toFixed(2) + '%'
+                document.getElementById('result').innerHTML = data.survive <= 0.5 ? 'You survive!. probability of Death='+probability : 'You do not survive. probability of Death='+probability;
+
+                document.getElementById('result').className = data.survive <= 0.5 ? 'results' : 'badresults';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
